@@ -1,26 +1,24 @@
 name := "Foo root project"
 
-lazy val root = project.in(file(".")).aggregate(fooJS, fooJVM).settings(
-  publish := {},
-  publishLocal := {}
-)
+lazy val root = project.in(file(".")).
+  aggregate(fooJS, fooJVM).
+  settings(
+    publish := {},
+    publishLocal := {}
+  )
 
-lazy val fooSharedSettings = Seq(
+lazy val foo = crossProject.in(file(".")).
+  settings(
     name := "foo",
     version := "0.1-SNAPSHOT",
-    unmanagedSourceDirectories in Compile +=
-      baseDirectory.value / ".." / "foo-shared" / "src" / "main" / "scala"
-)
-
-lazy val fooJS = project.in(file("foo-js"))
-  .settings(scalaJSSettings: _*)
-  .settings(fooSharedSettings: _*)
-  .settings(
+    scalaVersion := "2.11.5"
+  ).
+  jvmSettings(
+    // Add JVM-specific settings here
+  ).
+  jsSettings(
     // Add JS-specific settings here
   )
 
-lazy val fooJVM = project.in(file("foo-jvm"))
-  .settings(fooSharedSettings: _*)
-  .settings(
-    // Add JVM-specific settings here
-  )
+lazy val fooJVM = foo.jvm
+lazy val fooJS = foo.js
