@@ -11,7 +11,7 @@ lazy val foo = crossProject.in(file(".")).
   settings(
     name := "foo",
     version := "0.1-SNAPSHOT",
-    scalaVersion := "2.11.5"
+    scalaVersion := "2.11.6"
   ).
   jvmSettings(
     // Add JVM-specific settings here
