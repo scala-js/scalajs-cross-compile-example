@@ -1,3 +1,5 @@
+import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
+
 name := "Foo root project"
 
 lazy val root = project.in(file(".")).
