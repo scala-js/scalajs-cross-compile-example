@@ -1,3 +1,4 @@
+//https://intellij-support.jetbrains.com/hc/requests/67342
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
 name := "Foo root project"
