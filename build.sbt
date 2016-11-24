@@ -1,3 +1,6 @@
+//https://intellij-support.jetbrains.com/hc/requests/67342
+import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
+
 name := "Foo root project"
 
 scalaVersion in ThisBuild := "2.11.8"
