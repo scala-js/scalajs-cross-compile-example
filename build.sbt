@@ -1,25 +1,21 @@
-name := "Foo root project"
-
-scalaVersion in ThisBuild := "2.12.4"
+ThisBuild / scalaVersion := "2.13.1"
 
 lazy val root = project.in(file(".")).
-  aggregate(fooJS, fooJVM).
+  aggregate(foo.js, foo.jvm).
   settings(
     publish := {},
-    publishLocal := {}
+    publishLocal := {},
   )
 
-lazy val foo = crossProject.in(file(".")).
+lazy val foo = crossProject(JSPlatform, JVMPlatform).in(file(".")).
   settings(
     name := "foo",
-    version := "0.1-SNAPSHOT"
+    version := "0.1-SNAPSHOT",
   ).
   jvmSettings(
     // Add JVM-specific settings here
   ).
   jsSettings(
     // Add JS-specific settings here
+    scalaJSUseMainModuleInitializer := true,
   )
-
-lazy val fooJVM = foo.jvm
-lazy val fooJS = foo.js
