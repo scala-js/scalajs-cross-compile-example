@@ -3,9 +3,9 @@ language: scala
 script:
   - sbt ++$TRAVIS_SCALA_VERSION fooJVM/run fooJS/run
 scala:
-  - 2.13.1
+  - 2.13.3
 jdk:
-  - openjdk8
+  - openjdk11
 
 cache:
   directories:
